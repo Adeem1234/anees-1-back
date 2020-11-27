@@ -1,0 +1,19 @@
+{
+  "name": "anees-1-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adeem1234/anees-1-back.git"
+  },
+  "author": "Mirza Adeem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adeem1234/anees-1-back/issues"
+  },
+  "homepage": "https://github.com/Adeem1234/anees-1-back#readme"
+}
