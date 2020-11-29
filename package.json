@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/Adeem1234/anees-1-back/issues"
   },
-  "homepage": "https://github.com/Adeem1234/anees-1-back#readme"
+  "homepage": "https://github.com/Adeem1234/anees-1-back#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-ejs": "^1.1.9",
+    "mongoose": "^5.10.16",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
 }

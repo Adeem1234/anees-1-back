@@ -1,0 +1,30 @@
+<head>
+	<title>Login</title>
+</head>
+<div class="row mt-5">
+	<div class="col-md-6 m-auto">
+		<div class="card card-body">
+			<img src="/img/logo.png" alt="logo" />
+			<%- include('partials/messages'); %>
+			<form action="/admin/login" method="POST">
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email"
+						class="form-control" placeholder="Enter Email"
+						autocomplete="username" />
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" id="password" name="password"
+						class="form-control" autocomplete="current-password"
+						placeholder="Enter Password" />
+				</div>
+				<button type="submit"
+					class="btn btn-primary btn-block mb-3">Login</button>
+			</form>
+			<!-- <a href="/admin/register">
+				<button type="buttom" class="btn btn-danger btn-block">Register</button>
+			</a> -->
+		</div>
+	</div>
+</div>

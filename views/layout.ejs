@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+	<!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+	<!-- <meta charset="utf-8" /> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+		crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.css" />
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+		crossorigin="anonymous" />
+
+	<!-- // <link href="/vendor/fontawesome-free/css/all.css" rel="stylesheet"
+	// 	type="text/css" /> -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+		rel="stylesheet" />
+
+	<!-- <link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+
+	<!-- Custom styles for this template-->
+	<link href="/css/sb-admin-2.min.css" rel="stylesheet" />
+	<!-- Select2  -->
+	<script src="https://kit.fontawesome.com/b6f2eb5ec3.js" crossorigin="anonymous"></script>
+	<link
+		href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css"
+		rel="stylesheet" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<title>Survey</title>
+</head>
+
+<body>
+	<div><%- body %></div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+		crossorigin="anonymous"></script>
+
+	<!-- Bootstrap core JavaScript -->
+	<!-- <script src="/vendor/jquery/jquery.min.js" type="test/javascript" crossorigin="anonymous"></script> -->
+	<!-- <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js" type="test/javascript" crossorigin="anonymous"></script> -->
+
+	<!-- Core plugin JavaScript-->
+	<!-- <script src="/vendor/jquery-easing/jquery.easing.min.js" type="test/javascript" crossorigin="anonymous"></script> -->
+	<!-- Custom scripts for all pages-->
+	<!-- <script src="/js/sb-admin-2.min.js" type="test/javascript" crossorigin="anonymous"></script> -->
+	<!-- Page level plugins -->
+	<script src="/vendor/datatables/jquery.dataTables.js"></script>
+	<script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
+	<!-- Page level custom scripts -->
+	<script src="/js/demo/datatables-demo.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<!-- Select 2 -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+
+
+	<!-- Add and delete option in survey question  -->
+	<script>
+		// Add option filed in the Survey Question 3
+		$('#addQuestionOption').click(() => {
+			let Option_no = parseInt($('#totalOption').val()) + 1;
+			let new_input = "<input type='text' id='new_" + Option_no + "' class='form-control border border-secondary w-100 my-1' placeholder= 'Option " + Option_no + "'  name='option' >";
+			$('#Option').append(new_input);
+			$('#totalOption').val(Option_no);
+		});
+		$('#removeQuestionOption').click(() => {
+			let lastoption = $('#totalOption').val();
+			if (lastoption > 1) {
+				$('#new_' + lastoption).remove();
+				$('#totalOption').val(lastoption - 1);
+			}
+		});
+		$('#addDetail').click(() => {
+			let detail_no = parseInt($('#totalDetail').val()) + 1;
+			let new_input = "<input type='text' id='new_" + detail_no + "' class='form-control border border-secondary w-75 my-1 mr-1' placeholder= 'Detail' name='details' >";
+			$('#DetailInput').append(new_input);
+			$('#totalDetail').val(detail_no);
+		});
+		$('#removeDetail').click(() => {
+			let lastoption = $('#totalDetail').val();
+			if (lastoption > 1) {
+				$('#new_' + lastoption).remove();
+				$('#totalDetail').val(lastoption - 1);
+			}
+		});
+	</script>
+	<!-- select 2 width set -->
+	<script>
+		$('.select2-selection').select2({
+			width: 'resolve',
+		});
+	</script>
+	<!-- show subplans based on plan selected  -->
+	<script>
+		$('#plans').on('change', () => {
+			let plans = $('#plans').select2('data');
+			let list = [];
+			for (var plan of plans) {
+				list.push(plan)
+			};
+			let form = new FormData();
+			form.append('plan[]', Array.from(list).map(e => e.id))
+			$.ajax(
+				{
+					type: 'POST',
+					url: '/admin/form/get-subplan',
+					processData: false,
+					contentType: false,
+					data: form,
+					success: (res) => {
+						$('#subplans').empty().trigger("change");
+						let plans = res.plans;
+
+						for (let i = 0; i < plans.length; i++) {
+							let plan = plans[i];
+							let optGroup = document.createElement("optgroup");
+							optGroup.setAttribute('label', plan.title);
+							for (let j = 0; j < plan.subPlan.length; j++) {
+								let subPlan = plan.subPlan[j];
+								let newOption = new Option(subPlan.name, subPlan._id,);
+								newOption.setAttribute('value', subPlan._id)
+								optGroup.appendChild(newOption)
+							}
+							$('#subplans').append(optGroup).trigger('change');
+						}
+						error: (e) => {
+							console.error(e);
+						}
+					}
+				}
+			)
+		});
+	</script>
+	<!-- show providers and templates based  -->
+	<script>
+		$('#subplans').on('change', () => {
+			let subplans = $('#subplans').select2('data');
+			let list = [];
+			for (var subplan of subplans) {
+				list.push(subplan)
+			};
+			let form = new FormData();
+			form.append('subplan[]', Array.from(list).map(e => e.id))
+			$.ajax(
+				{
+					type: 'POST',
+					url: '/admin/form/get-subplan-details',
+					processData: false,
+					contentType: false,
+					data: form,
+					success: (res) => {
+						$('#providers').empty().trigger("change");
+						$('#templates').empty().trigger("change");
+						let subplans = res.subPlans;
+						for (let i = 0; i < subplans.length; i++) {
+							let subplan = subplans[i];
+							let provider = document.createElement("optgroup");
+							provider.setAttribute('label', subplan.name);
+							for (let j = 0; j < subplan.provider.length; j++) {
+								let providers = subplan.provider[j];
+								let newOption = new Option(providers.name, providers.id,);
+								newOption.setAttribute('value', providers._id)
+								provider.appendChild(newOption)
+							}
+							$('#providers').append(provider).trigger('change');
+							let template = document.createElement("optgroup");
+							template.setAttribute('label', subplan.name);
+							for (let j = 0; j < subplan.template.length; j++) {
+								let templates = subplan.template[j];
+								let newOption = new Option(templates.name, templates.id,);
+								newOption.setAttribute('value', templates._id)
+								template.appendChild(newOption)
+							}
+							$('#templates').append(template).trigger('change');
+						}
+
+						error: (e) => {
+							console.error(e);
+						}
+					}
+				}
+			)
+		});
+	</script>
+
+	<!-- Show onhover descripition -->
+	<script>
+		$('[data-toggle="tooltip"]').tooltip();
+	</script>
+
+
+</body>
+
+</html>
