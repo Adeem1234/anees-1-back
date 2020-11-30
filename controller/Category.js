@@ -1,4 +1,4 @@
-const Category = require('../model/Category');
+const Category = require('../model/categories');
 const { CategoryValidation } = require('../config/validation');
 
 module.exports = {
