@@ -8,12 +8,15 @@ const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const dotenv = require('dotenv');
 
+
+dotenv.config();
 
 
 //config command to use the dotenv 
 const PORT = 5000 || process.env.PORT;
-// 
+
 const app = express();
 app.use(fileUpload());
 

@@ -39,6 +39,7 @@ module.exports = {
 								throw err;
 							}
 							newUser.password = hash;
+							console.log(newUser)
 							newUser
 								.save()
 								.then((user) => {
