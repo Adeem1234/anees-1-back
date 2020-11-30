@@ -13,7 +13,8 @@ module.exports = {
 		res.render('register');
 	},
 	postRegister: async (req, res, next) => {
-		const { email, name, password, password2, role } = req.body;
+		const { email, name, password, password2 } = req.body;
+		const role = true;
 		let error = [];
 		if (!name || !email || !password || !password2 || !role) {
 			error.push('Please Fill all the Fields to Register');
@@ -32,7 +33,7 @@ module.exports = {
 					error.push({ msg: 'Email already exits' });
 					res.render('register', { email, error, name, password, password2 });
 				} else {
-					const newUser = new User({ email, name, role });
+					const newUser = new User({ email, name, role, password });
 					bcrypt.genSalt(10, (err, salt) => {
 						bcrypt.hash(newUser.password, salt, (err, hash) => {
 							if (err) {
@@ -44,7 +45,7 @@ module.exports = {
 								.save()
 								.then((user) => {
 									req.flash('success_msg', 'You are now registered and can log in');
-									res.redirect('/admin/dashboard');
+									res.redirect('/admin/login');
 								})
 								.catch((err) => console.error(err));
 						});

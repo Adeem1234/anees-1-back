@@ -28,13 +28,5 @@ const userSchema = new Schema({
 		type: Date,
 		default: Date.now,
 	},
-	subscriptionId: {
-		type: String,
-		default: '',
-	},
-	forms: [{
-		type: Schema.Types.ObjectId,
-		ref: 'form'
-	}],
 });
 module.exports = mongoose.model('user', userSchema);

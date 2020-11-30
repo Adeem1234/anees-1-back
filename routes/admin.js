@@ -8,6 +8,9 @@ const User = require('../controller/userslist')
 
 const dashboard = require('../controller/dashboard');
 const Category = require('../controller/Category');
+const SubCategory = require('../controller/subCategory');
+
+
 
 //Login Page Route
 Router.route('/login').get(forwardAuthenticated, Admin.getLogin).post(Admin.postLogin);
@@ -38,5 +41,17 @@ Router.route('/category-add').get(ensureAuthenticated, Category.category).post(e
 Router.route('/category-edit/:id').get(ensureAuthenticated, Category.edit).post(ensureAuthenticated, Category.update);
 // Delete a Category
 Router.route('/category-delete/:id').get(ensureAuthenticated, Category.delete);
+
+
+
+// Show SubCategory
+Router.route('/sub-category').get(ensureAuthenticated, SubCategory.get);
+// Add SubCategory
+Router.route('/sub-category-add').get(ensureAuthenticated, SubCategory.show).post(ensureAuthenticated, SubCategory.add);
+// Edit The SubCategory
+Router.route('/sub-category-edit/:id').get(ensureAuthenticated, SubCategory.edit).post(ensureAuthenticated, SubCategory.update);
+// Delete a SubCategory
+Router.route('/sub-category-delete/:id').get(ensureAuthenticated, SubCategory.delete);
+
 
 module.exports = Router;
