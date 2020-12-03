@@ -27,8 +27,8 @@
 								cellspacing="1">
 								<thead class="thead-inverse">
 									<tr>
-										<th class="w-25" scope="row">Name</th>
-										<th class="w-25">Plan</th>
+										<th class="w-50" scope="row">Sub Category</th>
+										<th class="w-50">Category</th>
 										<th class="w-25 px-3">Actions</th>
 									</tr>
 								</thead>
@@ -40,7 +40,7 @@
 										<td class="text-wrap"><%=subCategory.name%>
 										</td>
 										<td class="text-wrap">
-											<%=subCategory.category%>
+											<%=subCategory.category.title%>
 										</td>
 										<td class="align-content-center">
 											<a href="/admin/sub-category-edit/<%=subCategory._id%>">

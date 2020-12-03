@@ -23,17 +23,17 @@
 								Sub Category</h6>
 						</div>
 						<div class="card-body">
-							<div class="table-responsive">
-								<input type="text" name="name" class="form-control border border-secondary w-100 mb-2"
-									placeholder="Enter the Sub Category name" required />
+							<div class=" h-auto">
 								<select type="text"
-									class="w-100 h-auto border select2-selection select2-lg select2-selection select2-multiple border-secondary text-secondary"
+									class="w-100 p-2 mb-3 h-100 border select2-selection select2-lg select2-selection select2-multiple border-secondary text-secondary"
 									name="category" required>
 									<% for (var category of category ){ %>
-									<option value="<%=category._id%>">
-										<%=category.name%></option>
+									<option value="<%=category._id%>" class="py-2 my-2">
+										<%=category.title%></option>
 									<%}%>
-								</select>
+									</select>
+								<input type="text" name="name" class="form-control border border-secondary w-100 my-3"
+									placeholder="Enter the Sub Category name" required />
 							</div>
 						</div>
 						<div class="card-footer">

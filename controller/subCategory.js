@@ -13,11 +13,6 @@ module.exports = {
 	add: async (req, res, next) => {
 		const { name, category } = req.body;
 		// Check Validation
-		const { error } = SubCategoryValidation({ name, category });
-		if (error) {
-			const errorResult = error.details;
-			return res.status(422).json(errorResult);
-		}
 		// Category Exits
 		const subCategoryexits = await SubCategory.findOne({ name: name, category: category });
 		if (subCategoryexits) return res.status(421).send('Category already Exists');
@@ -48,11 +43,6 @@ module.exports = {
 		const { id } = req.params;
 		const { name, category } = req.body;
 		// Check Validation
-		const { error } = SubCategoryValidation({ name, category });
-		if (error) {
-			const errorResult = error.details;
-			return res.status(422).json(error);
-		}
 		const categoryId = await Category.findOne({ name: category });
 		// save Category
 		const updateSubCategory = new SubCategory.findOneAndUpdate(id, { name: name, category: categoryId._id });

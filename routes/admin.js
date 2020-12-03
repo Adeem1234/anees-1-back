@@ -7,51 +7,88 @@ const User = require('../controller/userslist')
 
 
 const dashboard = require('../controller/dashboard');
-const Category = require('../controller/Category');
+const Category = require('../controller/category');
 const SubCategory = require('../controller/subCategory');
-
+const Product = require('../controller/product')
 
 
 //Login Page Route
-Router.route('/login').get(forwardAuthenticated, Admin.getLogin).post(Admin.postLogin);
+Router.route('/login')
+    .get(forwardAuthenticated, Admin.getLogin)
+    .post(Admin.postLogin);
 //register Handle
-Router.route('/register').get(forwardAuthenticated, Admin.getRegister).post(forwardAuthenticated, Admin.postRegister);
+Router.route('/register')
+    .get(forwardAuthenticated, Admin.getRegister)
+    .post(forwardAuthenticated, Admin.postRegister);
 // Logout
-Router.route('/logout').get(Admin.Logout);
+Router.route('/logout')
+    .get(Admin.Logout);
 
 // Home Page Dashboard Page
-Router.route('/').get(ensureAuthenticated, dashboard.index);
+Router.route('/')
+    .get(ensureAuthenticated, dashboard.index);
 // Dashboard
-Router.route('/dashboard').get(ensureAuthenticated, dashboard.index);
+Router.route('/dashboard')
+    .get(ensureAuthenticated, dashboard.index);
 // Users List who have performed Specific Surveys
-Router.route('/dashboard/user_surveys/:id').get(ensureAuthenticated, dashboard.users);
+Router.route('/dashboard/user_surveys/:id')
+    .get(ensureAuthenticated, dashboard.users);
 //Show the Results of Selected User
-Router.route('/dashboard/survey_results/:id/:pid').get(ensureAuthenticated, dashboard.surveys);
+Router.route('/dashboard/survey_results/:id/:pid')
+    .get(ensureAuthenticated, dashboard.surveys);
 
 // List of users (clients) registered
-Router.route('/users/').get(ensureAuthenticated, User.users);
+Router.route('/users/')
+    .get(ensureAuthenticated, User.users);
 // Update user from admin to user and vise versa
-Router.route('/role/update/:id').get(ensureAuthenticated, User.updateUserRole);
+Router.route('/role/update/:id')
+    .get(ensureAuthenticated, User.updateUserRole);
 
 // Show Category Survey Categories
-Router.route('/category').get(ensureAuthenticated, Category.showCategory);
+Router.route('/category')
+    .get(ensureAuthenticated, Category.showCategory);
 // Add Category Survey Categories
-Router.route('/category-add').get(ensureAuthenticated, Category.category).post(ensureAuthenticated, Category.addCategory);
+Router.route('/category-add')
+    .get(ensureAuthenticated, Category.category)
+    .post(ensureAuthenticated, Category.addCategory);
 // Edit The Category
-Router.route('/category-edit/:id').get(ensureAuthenticated, Category.edit).post(ensureAuthenticated, Category.update);
+Router.route('/category-edit/:id')
+    .get(ensureAuthenticated, Category.edit)
+    .post(ensureAuthenticated, Category.update);
 // Delete a Category
-Router.route('/category-delete/:id').get(ensureAuthenticated, Category.delete);
-
-
+Router.route('/category-delete/:id')
+    .get(ensureAuthenticated, Category.delete);
 
 // Show SubCategory
-Router.route('/sub-category').get(ensureAuthenticated, SubCategory.get);
+Router.route('/sub-category')
+    .get(ensureAuthenticated, SubCategory.get);
 // Add SubCategory
-Router.route('/sub-category-add').get(ensureAuthenticated, SubCategory.show).post(ensureAuthenticated, SubCategory.add);
+Router.route('/sub-category-add')
+    .get(ensureAuthenticated, SubCategory.show)
+    .post(ensureAuthenticated, SubCategory.add);
 // Edit The SubCategory
-Router.route('/sub-category-edit/:id').get(ensureAuthenticated, SubCategory.edit).post(ensureAuthenticated, SubCategory.update);
+Router.route('/sub-category-edit/:id')
+    .get(ensureAuthenticated, SubCategory.edit)
+    .post(ensureAuthenticated, SubCategory.update);
 // Delete a SubCategory
-Router.route('/sub-category-delete/:id').get(ensureAuthenticated, SubCategory.delete);
+Router.route('/sub-category-delete/:id')
+    .get(ensureAuthenticated, SubCategory.delete);
+
+// Show Product
+Router.route('/product')
+    .get(ensureAuthenticated, Product.get);
+// Add Product
+Router.route('/product/add')
+    .get(ensureAuthenticated, Product.show)
+    .post(ensureAuthenticated, Product.add);
+// Edit The Product
+Router.route('/product/edit/:id')
+    .get(ensureAuthenticated, Product.edit)
+    .post(ensureAuthenticated, Product.update);
+// Delete a Product
+Router.route('/product/delete/:id')
+    .get(ensureAuthenticated, Product.delete);
+
 
 
 module.exports = Router;
