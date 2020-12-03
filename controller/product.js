@@ -1,15 +1,19 @@
 const Product = require('../model/products');
+const Category = require('../model/categories')
 
 const path = require('path');
 
 module.exports = {
     get: async (req, res, next) => {
-        const products = await Product.find({}).populate('subPlan');
+        const products = await Product.find({}).populate('category');
         res.render('product', { products });
     },
     show: async (req, res, next) => {
-        let products = await Product.find({}).populate('subPlan');
-        res.render('templateAdd', { products });
+        let categories = await Category.find({}).populate('subCategory');
+        res.render('productAdd', { categories });
+    },
+    subCategories: async (req, res, next) => {
+
     },
     add: async (req, res, next) => {
         const { name, subPlan } = req.body;
@@ -57,7 +61,7 @@ module.exports = {
     },
     edit: async (req, res, next) => {
         const product = await Product.findById(req.params.id);
-        res.render('TemplateEdit', { product });
+        res.render('productEdit', { product });
     },
     update: async (req, res, next) => {
         const { id } = req.params;

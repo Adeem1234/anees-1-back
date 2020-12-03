@@ -9,7 +9,7 @@ const productSchema = Schema({
     details: [{
         subCategory: {
             type: Schema.Types.ObjectId,
-            ref: 'subCategories'
+            ref: 'subCategory'
         },
         detail: String
     }]

@@ -121,18 +121,18 @@
 	</script>
 	<!-- show subplans based on plan selected  -->
 	<script>
-		$('#plans').on('change', () => {
-			let plans = $('#plans').select2('data');
+		$('#category').on('change', () => {
+			let categories = $('#category').select2('data');
 			let list = [];
-			for (var plan of plans) {
-				list.push(plan)
+			for (var category of categories) {
+				list.push(category)
 			};
 			let form = new FormData();
-			form.append('plan[]', Array.from(list).map(e => e.id))
+			form.append('category[]', Array.from(list).map(e => e.id))
 			$.ajax(
 				{
 					type: 'POST',
-					url: '/admin/form/get-subplan',
+					url: '/admin/product/get/sub-categories',
 					processData: false,
 					contentType: false,
 					data: form,

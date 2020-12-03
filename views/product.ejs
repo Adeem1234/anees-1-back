@@ -34,28 +34,22 @@
                                 </thead>
 
                                 <tbody>
-                                    <!-- <%for (var subCategory of subCategory) { %> -->
-                                    <!-- <% if(subCategory.category !== null){%> -->
                                     <tr>
                                         <td class="text-wrap">
-                                            <!-- <%=subCategory.name%> -->
                                         </td>
                                         <td class="text-wrap">
-                                            <!-- <%=subCategory.category.title%> -->
                                         </td>
                                         <td class="align-content-center">
-                                            <a href="/admin/sub-category-edit/<%=subCategory._id%>">
+                                            <a href="/admin/sub-category-edit/">
                                                 <button class="btn btn-sm btn-warning"><i
                                                         class="far fa-edit"></i></button>
                                             </a>
-                                            <a href="/admin/sub-category-delete/<%=subCategory._id%>">
+                                            <a href="/admin/sub-category-delete/">
                                                 <button class="btn btn-sm btn-danger"><i
                                                         class="far fa-trash-alt"></i></button>
                                             </a>
                                         </td>
                                     </tr>
-                                    <!-- <%}%> -->
-                                    <!-- <%}%> -->
                                 </tbody>
                             </table>
                         </div>

@@ -81,6 +81,9 @@ Router.route('/products')
 Router.route('/product/add')
     .get(ensureAuthenticated, Product.show)
     .post(ensureAuthenticated, Product.add);
+// Show subcategories of category selected for product
+Router.route('/product/get/sub-categories')
+    .get(ensureAuthenticated, Product.subCategories)
 // Edit The Product
 Router.route('/product/edit/:id')
     .get(ensureAuthenticated, Product.edit)
