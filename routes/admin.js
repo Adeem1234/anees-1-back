@@ -75,7 +75,7 @@ Router.route('/sub-category-delete/:id')
     .get(ensureAuthenticated, SubCategory.delete);
 
 // Show Product
-Router.route('/product')
+Router.route('/products')
     .get(ensureAuthenticated, Product.get);
 // Add Product
 Router.route('/product/add')

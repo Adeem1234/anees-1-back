@@ -1,17 +1,15 @@
-const Template = require('../model/Templates');
-const SubPlan = require('../model/subPlan');
-const Plan = require('../model/Plan');
+const Product = require('../model/products');
 
 const path = require('path');
 
 module.exports = {
     get: async (req, res, next) => {
-        const templates = await Template.find({}).populate('subPlan');
-        res.render('template', { templates });
+        const products = await Product.find({}).populate('subPlan');
+        res.render('product', { products });
     },
     show: async (req, res, next) => {
-        let plans = await Plan.find({}).populate('subPlan');
-        res.render('templateAdd', { plans });
+        let products = await Product.find({}).populate('subPlan');
+        res.render('templateAdd', { products });
     },
     add: async (req, res, next) => {
         const { name, subPlan } = req.body;
@@ -25,41 +23,41 @@ module.exports = {
             const errorResult = error.details;
             return res.status(422).json(errorResult);
         }
-        const templateExits = await Template.findOne({
+        const templateExits = await Product.findOne({
             name: name,
             subPlan: subPlan,
         });
-        if (templateExits !== null) return res.status(421).send('Template already Exists');
+        if (templateExits !== null) return res.status(421).send('Product already Exists');
         const newFile = {
             name: fileName,
             path: `${process.env.SERVER_ADDRESS}/templateFiles/${fileName}`,
         };
-        const saveTemplate = new Template({
+        const saveTemplate = new Product({
             name: name,
             subPlan: subPlan,
             file: newFile,
         });
         try {
             await saveTemplate.save();
-            const checkTemplate = await Template.findOne({
+            const checkTemplate = await Product.findOne({
                 name: name,
                 subPlan: subPlan,
 
             });
             const id = checkTemplate._id;
-            const updateSubPlan = await SubPlan.findByIdAndUpdate(subPlan, { $push: { template: id } });
+            const updateSubPlan = await SubPlan.findByIdAndUpdate(subPlan, { $push: { product: id } });
             await updateSubPlan.save();
             file.mv(`${__dirname}../../public/templateImages/${fileName}`, (err) => {
                 if (err) console.error(err);
             });
-            res.redirect('/admin/template');
+            res.redirect('/admin/products);
         } catch (err) {
             res.status(421).json('err' + err);
         }
     },
     edit: async (req, res, next) => {
-        const template = await Template.findById(req.params.id);
-        res.render('TemplateEdit', { template });
+        const product = await Product.findById(req.params.id);
+        res.render('TemplateEdit', { product });
     },
     update: async (req, res, next) => {
         const { id } = req.params;
@@ -69,18 +67,18 @@ module.exports = {
             const errorResult = error.details;
             return res.status(422).json(errorResult);
         }
-        const updateTemplete = await Template.findByIdAndUpdate(id, { name: name, subPlan: subPlan });
+        const updateTemplete = await Product.findByIdAndUpdate(id, { name: name, subPlan: subPlan });
         await updateTemplete.save();
-        res.redirect('/admin/template');
+        res.redirect('/admin/products');
     },
     delete: async (req, res, next) => {
         try {
-            await Template.findByIdAndRemove(req.params.id, async (err) => {
+            await Product.findByIdAndRemove(req.params.id, async (err) => {
                 if (err) return handleError(err);
-                res.redirect('/admin/template');
+                res.redirect('/admin/products');
             });
         } catch (error) {
-            return res.status(422).json('Template not Deleted or invalid Template Id');
+            return res.status(422).json('Product not Deleted or invalid Product Id');
         }
     },
 };
