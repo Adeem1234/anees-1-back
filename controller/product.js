@@ -50,8 +50,8 @@ module.exports = {
             file.mv(`${__dirname}../../public/templateImages/${fileName}`, (err) => {
                 if (err) console.error(err);
             });
-            res.redirect('/admin/products);
-        } catch (err) {
+            res.redirect('/admin/products')
+        } catch (error) {
             res.status(421).json('err' + err);
         }
     },
